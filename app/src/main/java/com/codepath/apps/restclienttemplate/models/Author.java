@@ -2,13 +2,17 @@ package com.codepath.apps.restclienttemplate.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 public class Author {
 
     public int id;
     public String name;
     public String screen_name;
     public String profile_picture_url;
+
+    public Author() {}
 
     public static Author fromJson(JSONObject j) throws JSONException {
         Author a = new Author();

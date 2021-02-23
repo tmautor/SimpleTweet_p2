@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
@@ -60,6 +62,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView author_profile_image;
         TextView author_name;
         TextView tweet_content;
+        TextView tweet_time;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,12 +70,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             author_profile_image = itemView.findViewById(R.id.TWEET_IV_AUTHOR_PICTURE);
             author_name = itemView.findViewById(R.id.TWEET_TV_AUTHOR_NAME);
             tweet_content = itemView.findViewById(R.id.TWEET_TV_CONTENT);
+            tweet_time = itemView.findViewById(R.id.TWEET_TV_TIME);
         }
 
         public void bind(Tweet t) {
             author_name.setText(t.author.screen_name);
             tweet_content.setText(t.body);
             Glide.with(c).load(t.author.profile_picture_url).into(author_profile_image);
+            tweet_time.setText(t.getTimePostReference());
         }
     }
 }
